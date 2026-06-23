@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg">
+<symbol id="arrow1" viewBox="0 0 9 6">
+  <path stroke="currentColor" stroke-linecap="round" d="m.5.5 3.945 4.054M8.5.61 4.446 4.553"/>
+</symbol>
 <symbol id="exclamation-mark" viewBox="0 0 2 8">
   <mask id="a" width="3" height="9" x="-.496" y="-.88" maskUnits="userSpaceOnUse">
     <path d="M-.496-.88h3v9h-3z"/>

@@ -41,7 +41,9 @@ class DynamicAdapt {
 	mediaHandler(matchMedia, оbjects) {
 		if (matchMedia.matches) {
 			оbjects.forEach((оbject) => {
-				this.moveTo(оbject.place, оbject.element, оbject.destination)
+				if (оbject.destination) {
+					this.moveTo(оbject.place, оbject.element, оbject.destination)
+				}
 			})
 		} else {
 			оbjects.forEach(({ parent, element, index }) => {
@@ -52,6 +54,9 @@ class DynamicAdapt {
 		}
 	}
 	moveTo(place, element, destination) {
+		if (!destination) {
+			return
+		}
 		element.classList.add(this.daClassname)
 		if (place === 'last' || place >= destination.children.length) {
 			destination.append(element)
