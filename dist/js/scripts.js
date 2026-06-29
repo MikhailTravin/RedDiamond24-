@@ -1714,46 +1714,60 @@ if (videos) {
 //========================================================================================================================================================
 
 const popupTriggers = document.querySelectorAll('.card-section-popup');
-let isPopupVisible = false;
 
-if (popupTriggers.length) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const popupElement = entry.target;
-            const popupId = popupElement.dataset.popup;
+if (popupTriggers) {
+    let isPopupVisible = false;
+    function closePopup() {
+        if (isPopupVisible) {
+            document.documentElement.classList.remove('popup-show');
+            const activePopup = document.querySelector('.popup_show');
+            if (activePopup) {
+                activePopup.classList.remove('popup_show');
+            }
+            isPopupVisible = false;
+        }
+    }
 
-            const visiblePercent = entry.intersectionRatio * 100;
+    if (popupTriggers.length) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const popupElement = entry.target;
+                const popupId = popupElement.dataset.popup;
 
-            if (visiblePercent >= 50 && entry.isIntersecting) {
-                if (!isPopupVisible) {
-                    document.documentElement.classList.add('popup-show');
-                    if (popupId) {
-                        const popup = document.querySelector(popupId);
-                        if (popup) {
-                            popup.classList.add('popup_show');
+                const visiblePercent = entry.intersectionRatio * 100;
+
+                if (visiblePercent >= 50 && entry.isIntersecting) {
+                    if (!isPopupVisible) {
+                        document.documentElement.classList.add('popup-show');
+                        if (popupId) {
+                            const popup = document.querySelector(popupId);
+                            if (popup) {
+                                popup.classList.add('popup_show');
+                            }
                         }
-                    }
-                    isPopupVisible = true;
-                }
-            }
-            else if (visiblePercent < 70 && isPopupVisible) {
-                document.documentElement.classList.remove('popup-show');
-                if (popupId) {
-                    const popup = document.querySelector(popupId);
-                    if (popup) {
-                        popup.classList.remove('popup_show');
+                        isPopupVisible = true;
                     }
                 }
-                isPopupVisible = false;
-            }
+                else if (visiblePercent < 70 && isPopupVisible) {
+                    closePopup();
+                }
+            });
+        }, {
+            threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+            rootMargin: '0px'
         });
-    }, {
-        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-        rootMargin: '0px'
-    });
 
-    popupTriggers.forEach(trigger => {
-        observer.observe(trigger);
+        popupTriggers.forEach(trigger => {
+            observer.observe(trigger);
+        });
+    }
+
+    document.addEventListener('click', function (e) {
+        const closeButton = e.target.closest('.popup__close');
+        if (closeButton) {
+            closePopup();
+            e.preventDefault();
+        }
     });
 }
 
