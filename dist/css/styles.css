@@ -2245,6 +2245,7 @@ a {
   }
 }
 .block-club__slider {
+  width: 100%;
   margin: -80px 0px 0px 0px;
 }
 @media (max-width: 1112px) {
@@ -2377,9 +2378,23 @@ a {
 }
 .block-video video {
   width: 100%;
+  min-height: 286px;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+@media (max-width: 768px) {
+  .block-video video.desc {
+    display: none;
+  }
+}
+.block-video video.mob {
+  display: none;
+}
+@media (max-width: 768px) {
+  .block-video video.mob {
+    display: block;
+  }
 }
 
 .block-reviews {
@@ -3248,7 +3263,7 @@ a {
 }
 @media (max-width: 768px) {
   .header-lang__button {
-    padding: 9px 10px;
+    padding: 8.8px 10px;
   }
 }
 .header-lang__dropdown {
@@ -3408,7 +3423,7 @@ a {
         -ms-flex-direction: column;
             flex-direction: column;
     top: -20px;
-    height: 100dvh;
+    height: calc(100dvh + 20px);
     overflow-y: auto;
     overflow-x: hidden;
     -ms-overflow-style: none;
