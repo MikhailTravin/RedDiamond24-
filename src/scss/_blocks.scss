@@ -1038,6 +1038,7 @@
     // .block-club__slider
 
     &__slider {
+        width: 100%;
         margin: -80px 0px 0px 0px;
         @media (max-width: 1112px) {
             margin: -80px -19px 0px -19px;
@@ -1159,8 +1160,20 @@
     overflow: hidden;
     video {
         width: 100%;
+        min-height: 286px;
         height: 100%;
         object-fit: cover;
+        &.desc {
+            @media (max-width: 768px) {
+                display: none;
+            }
+        }
+        &.mob {
+            display: none;
+            @media (max-width: 768px) {
+                display: block;
+            }
+        }
     }
 }
 
