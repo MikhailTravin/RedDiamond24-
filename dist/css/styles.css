@@ -1014,7 +1014,7 @@ a {
 
 .block-tecnical {
   overflow: hidden;
-  height: 100vh;
+  height: 100dvh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1141,7 +1141,7 @@ a {
           align-items: start;
   padding: 298px 0px 100px 0px;
   min-height: 300px;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 @media (max-width: 992px) {
   .block-policy {
