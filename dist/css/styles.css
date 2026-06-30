@@ -667,6 +667,10 @@ body {
   font-size: 16px;
   line-height: 120%;
   padding: 0px 0px 0px 0px !important;
+  /* Основной отступ снизу */
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+  /* Для старых версий iOS */
+  padding-bottom: constant(safe-area-inset-bottom, 20px);
 }
 body::after {
   content: "";
@@ -1344,8 +1348,6 @@ a {
 }
 
 .block-section {
-  position: relative;
-  z-index: -1;
   overflow: hidden;
 }
 @media (max-width: 992px) {
