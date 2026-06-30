@@ -1514,6 +1514,7 @@ a {
   }
 }
 .block-section__body {
+  isolation: isolate;
   position: relative;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
@@ -1529,6 +1530,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: -1;
   border-radius: 10px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
