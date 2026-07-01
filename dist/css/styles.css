@@ -668,7 +668,7 @@ body {
   font-size: 16px;
   line-height: 120%;
   padding: 0px 0px 0px 0px !important;
-  background-color: #4149f2;
+  background-color: transparent;
 }
 body::before {
   content: "";
